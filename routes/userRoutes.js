@@ -1,12 +1,14 @@
-// routes/userRoutes.js
-
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/userController');
 
-router.route('/all').get(userController.getAllUsers).post(userController.createUser);
+router.route('/all')
+  .get(userController.getAllUsers)
+  .post(userController.createUser);
 
 router.route('/:id')
-  .get(userController.getUserById);
+  .get(userController.getUserById)
+  .put(userController.updateUser)
+  .delete(userController.deleteUser);
 
 module.exports = router;
