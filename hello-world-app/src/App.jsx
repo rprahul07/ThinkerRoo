@@ -2,7 +2,16 @@ import { useState, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, NavLink, useNavigate, useParams } from 'react-router-dom'
 import './App.css'
 
-const API_BASE = 'http://localhost:3000/profile'
+const API_BASE = import.meta.env.VITE_PUBLIC_API_BASE || 'http://localhost:3000/profile'
+
+// Host shown in the sidebar badge, derived from the configured API base.
+const API_HOST = (() => {
+  try {
+    return new URL(API_BASE).host
+  } catch {
+    return API_BASE
+  }
+})()
 
 // ─── Reusable Components ──────────────────────────────────────────────────────
 
@@ -371,7 +380,7 @@ function Layout({ children, toast, clearToast }) {
         <div className="sidebar-footer">
           <div className="api-badge">
             <span className="api-dot" />
-            <span>API: localhost:3000</span>
+            <span>API: {API_HOST}</span>
           </div>
         </div>
       </aside>
