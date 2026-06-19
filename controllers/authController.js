@@ -11,10 +11,10 @@ const TABLE = 'users';
  * Body: { email, password }
  */
 const register = async (req, res) => {
-  const { email, password } = req.body;
+  const { name, email, password } = req.body;
 
-  if (!email || !password) {
-    return res.status(400).json({ success: false, message: 'Email and password are required.' });
+  if (!name || !email || !password) {
+    return res.status(400).json({ success: false, message: 'Name, email, and password are required.' });
   }
 
   if (password.length < 6) {
@@ -38,8 +38,8 @@ const register = async (req, res) => {
   // Insert user
   const { data, error } = await supabase
     .from(TABLE)
-    .insert({ email, password_hash })
-    .select('id, email, created_at')
+    .insert({ name, email, password_hash })
+    .select('id, name, email, created_at')
     .single();
 
   if (error) {

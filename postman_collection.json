@@ -52,7 +52,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"user@example.com\",\n    \"password\": \"secret123\"\n}"
+							"raw": "{\n    \"name\": \"Jane Doe\",\n    \"email\": \"user@example.com\",\n    \"password\": \"secret123\"\n}"
 						},
 						"url": {
 							"raw": "{{baseUrl}}/auth/register",
