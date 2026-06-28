@@ -105,6 +105,71 @@
 			]
 		},
 		{
+			"name": "Upload",
+			"item": [
+				{
+					"name": "Upload Photo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "",
+									"description": "Image file to upload"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/upload",
+							"host": ["{{baseUrl}}"],
+							"path": ["upload"]
+						},
+						"description": "Upload a photo to S3. Requires JWT in Authorization header. Returns the public URL and S3 key on success (201)."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Photo",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"key\": \"uploads/<your-user-id>/<filename>.jpg\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/upload",
+							"host": ["{{baseUrl}}"],
+							"path": ["upload"]
+						},
+						"description": "Delete a previously uploaded photo from S3. Requires JWT. The key must belong to the authenticated user (must start with uploads/<userId>/)."
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Users",
 			"item": [
 				{
