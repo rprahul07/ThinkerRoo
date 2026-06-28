@@ -134,7 +134,7 @@
 							"host": ["{{baseUrl}}"],
 							"path": ["upload"]
 						},
-						"description": "Upload a photo to S3. Requires JWT in Authorization header. Returns the public URL and S3 key on success (201)."
+						"description": "Upload a photo to S3. Requires JWT in Authorization header. Returns a pre-signed URL (valid 1 hour) and the S3 key on success (201)."
 					},
 					"response": []
 				},
