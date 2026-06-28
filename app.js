@@ -5,6 +5,7 @@ const app = express();
 
 const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
+const uploadRoutes = require('./routes/uploadRoutes');
 
 // Local dev origins plus any explicit production origins from env (comma-separated)
 const allowedOrigins = [
@@ -30,7 +31,9 @@ app.use(cors({
 }));
 
 app.use(express.json());
+
 app.use('/profile', userRoutes);
 app.use('/auth', authRoutes);
+app.use('/upload', uploadRoutes);
 
 module.exports = app;
